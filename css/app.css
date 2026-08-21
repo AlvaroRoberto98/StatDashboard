@@ -1,0 +1,1736 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #172033;
+  background: #f4f6f8;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+select {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(1240px, calc(100% - 32px));
+  margin: 32px auto 64px;
+}
+
+.topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 6px;
+  font-size: 30px;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: 20px;
+}
+
+.subtitle,
+.muted {
+  color: #697386;
+}
+
+.panel {
+  background: white;
+  border: 1px solid #e3e7ec;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 18px rgba(20, 30, 50, .04);
+}
+
+.controls-panel {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.35fr .8fr auto;
+  gap: 14px;
+  align-items: end;
+}
+
+.field {
+  min-width: 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+select {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid #ccd3dc;
+  border-radius: 9px;
+  padding: 8px 10px;
+  background: white;
+}
+
+.primary-button,
+.secondary-button {
+  min-height: 42px;
+  border-radius: 9px;
+  padding: 0 16px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.primary-button {
+  border: 1px solid #172033;
+  background: #172033;
+  color: white;
+}
+
+.secondary-button {
+  border: 1px solid #ccd3dc;
+  background: white;
+  color: #172033;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #a6adba;
+}
+
+.status-dot.ok {
+  background: #2d9a62;
+}
+
+.status-dot.error {
+  background: #c94545;
+}
+
+.status-dot.loading {
+  background: #d69525;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin: 0;
+}
+
+.summary-grid > div {
+  border-top: 1px solid #edf0f3;
+  padding-top: 12px;
+}
+
+dt {
+  color: #697386;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+dd {
+  margin: 5px 0 0;
+  font-weight: 650;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+
+.artifact-panel {
+  min-height: 280px;
+}
+
+.artifact-view.empty-state {
+  min-height: 180px;
+  display: grid;
+  place-items: center;
+  border: 1px dashed #ccd3dc;
+  border-radius: 10px;
+  color: #697386;
+  text-align: center;
+  padding: 24px;
+}
+
+.table-shell {
+  overflow-x: auto;
+  border: 1px solid #dde3ea;
+  border-radius: 10px;
+}
+
+.stat-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+  font-size: 14px;
+}
+
+.stat-table th,
+.stat-table td {
+  padding: 11px 13px;
+  border-bottom: 1px solid #e7ebf0;
+  vertical-align: top;
+}
+
+.stat-table thead th {
+  background: #f6f8fa;
+  text-align: center;
+  font-weight: 750;
+  color: #263143;
+  border-bottom: 1px solid #cfd6df;
+}
+
+.stat-table thead th:first-child {
+  text-align: left;
+}
+
+.stat-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.stat-table tbody td:not(:first-child) {
+  text-align: center;
+}
+
+.stat-table .row-label {
+  font-weight: 650;
+  color: #263143;
+}
+
+.stat-table .subrow .row-label {
+  padding-left: 30px;
+  font-weight: 500;
+  color: #465266;
+}
+
+.stat-table .section-row td {
+  background: #fafbfc;
+  font-weight: 750;
+}
+
+.table-caption {
+  margin: 0 0 14px;
+  font-size: 18px;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.table-subtitle {
+  color: #697386;
+  margin: -6px 0 14px;
+  font-size: 14px;
+}
+
+.table-footnotes {
+  margin-top: 14px;
+  color: #586579;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.table-footnotes p {
+  margin: 5px 0;
+}
+
+.render-warning {
+  border: 1px solid #ead9a8;
+  background: #fff9e8;
+  color: #6c5620;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+}
+
+.debug-panel summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.debug-content {
+  margin-top: 16px;
+}
+
+#artifact-url {
+  margin-bottom: 10px;
+  overflow-wrap: anywhere;
+}
+
+#json-preview {
+  margin: 0;
+  max-height: 520px;
+  overflow: auto;
+  padding: 16px;
+  border-radius: 10px;
+  background: #121722;
+  color: #e9edf4;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .controls-panel {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .actions {
+    grid-column: 1 / -1;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* ===== Estilos estruturados de tabela (v2) ===== */
+
+.stat-table tr[data-bold="true"] > td {
+  font-weight: 700;
+}
+
+.stat-table tr[data-italic="true"] > td {
+  font-style: italic;
+}
+
+.stat-table tr[data-border-top="true"] > td {
+  border-top: 2px solid #3a4657;
+}
+
+.stat-table tr[data-border-bottom="true"] > td {
+  border-bottom: 2px solid #3a4657;
+}
+
+.stat-table tr[data-align="left"] > td {
+  text-align: left;
+}
+
+.stat-table tr[data-align="center"] > td {
+  text-align: center;
+}
+
+.stat-table tr[data-align="right"] > td {
+  text-align: right;
+}
+
+.stat-table td.cell-bold {
+  font-weight: 700;
+}
+
+.stat-table td.cell-italic {
+  font-style: italic;
+}
+
+.stat-table td.cell-border-top {
+  border-top: 2px solid #3a4657;
+}
+
+.stat-table td.cell-border-bottom {
+  border-bottom: 2px solid #3a4657;
+}
+
+.stat-table td.cell-align-left {
+  text-align: left !important;
+}
+
+.stat-table td.cell-align-center {
+  text-align: center !important;
+}
+
+.stat-table td.cell-align-right {
+  text-align: right !important;
+}
+
+
+/* ===== Editor visual de tabela ===== */
+
+.editor-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 18px;
+  align-items: start;
+}
+
+.properties-panel {
+  position: sticky;
+  top: 18px;
+}
+
+.properties-empty {
+  margin-top: 16px;
+  color: #697386;
+  line-height: 1.5;
+}
+
+.row-properties {
+  margin-top: 18px;
+}
+
+.switch-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 38px;
+  border-bottom: 1px solid #edf0f3;
+  cursor: pointer;
+}
+
+.switch-row input {
+  width: 16px;
+  height: 16px;
+}
+
+.row-properties .field {
+  margin-top: 16px;
+}
+
+.row-properties input[type="text"] {
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid #ccd3dc;
+  border-radius: 9px;
+  padding: 8px 10px;
+  font: inherit;
+}
+
+.danger-row {
+  margin-top: 12px;
+}
+
+.properties-actions {
+  margin-top: 18px;
+}
+
+.stat-table tbody tr {
+  cursor: pointer;
+  transition:
+    background-color .12s ease,
+    box-shadow .12s ease;
+}
+
+.stat-table tbody tr:hover td {
+  background-color: #f4f7fb;
+}
+
+.stat-table tbody tr.row-selected td {
+  box-shadow:
+    inset 0 2px 0 #315a7d,
+    inset 0 -2px 0 #315a7d;
+}
+
+.stat-table tbody tr.row-selected td:first-child {
+  box-shadow:
+    inset 2px 0 0 #315a7d,
+    inset 0 2px 0 #315a7d,
+    inset 0 -2px 0 #315a7d;
+}
+
+.stat-table tbody tr.row-selected td:last-child {
+  box-shadow:
+    inset -2px 0 0 #315a7d,
+    inset 0 2px 0 #315a7d,
+    inset 0 -2px 0 #315a7d;
+}
+
+@media (max-width: 1050px) {
+  .editor-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .properties-panel {
+    position: static;
+  }
+}
+
+.topbar-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+
+/* ===== Seleção por célula, linha e coluna ===== */
+
+.selection-kind {
+  display: inline-block;
+  margin: 2px 0 14px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #eef3f8;
+  color: #315a7d;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.table-shell {
+  position: relative;
+  overflow: auto;
+}
+
+.stat-table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.stat-table th,
+.stat-table td {
+  position: relative;
+}
+
+.stat-table .selector-corner,
+.stat-table .row-selector,
+.stat-table .column-selector {
+  width: 30px;
+  min-width: 30px;
+  padding: 0;
+  text-align: center !important;
+  background: #f0f3f7;
+}
+
+.stat-table .column-selector button,
+.stat-table .row-selector button {
+  width: 100%;
+  height: 100%;
+  min-height: 34px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 800;
+  color: #6b7788;
+}
+
+.stat-table .column-selector button:hover,
+.stat-table .row-selector button:hover {
+  background: #dfe7ef;
+  color: #223044;
+}
+
+.stat-table td.cell-selectable {
+  cursor: cell;
+}
+
+.stat-table td.cell-selectable:hover {
+  outline: 2px solid #a7bed4;
+  outline-offset: -2px;
+}
+
+.stat-table tr.row-selected td:not(.row-selector) {
+  box-shadow:
+    inset 0 2px 0 #315a7d,
+    inset 0 -2px 0 #315a7d;
+}
+
+.stat-table tr.row-selected td:first-of-type {
+  box-shadow:
+    inset 0 2px 0 #315a7d,
+    inset 0 -2px 0 #315a7d;
+}
+
+.stat-table .column-selected {
+  box-shadow:
+    inset 2px 0 0 #315a7d,
+    inset -2px 0 0 #315a7d !important;
+}
+
+.stat-table .cell-selected {
+  outline: 3px solid #315a7d;
+  outline-offset: -3px;
+  z-index: 2;
+}
+
+.stat-table tr[data-border-bottom="true"] > td {
+  border-bottom: 2px solid #3a4657 !important;
+}
+
+.stat-table tr:last-child[data-border-bottom="true"] > td {
+  border-bottom: 2px solid #3a4657 !important;
+}
+
+.stat-table td.cell-border-bottom {
+  border-bottom: 2px solid #3a4657 !important;
+}
+
+.stat-table td.cell-border-left,
+.stat-table th.cell-border-left {
+  border-left: 2px solid #3a4657 !important;
+}
+
+.stat-table td.cell-border-right,
+.stat-table th.cell-border-right {
+  border-right: 2px solid #3a4657 !important;
+}
+
+
+/* ===== Vega-Lite figures ===== */
+
+.figure-shell {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.figure-title {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.figure-subtitle {
+  margin: 0 0 16px;
+  color: #697386;
+  font-size: 14px;
+}
+
+.figure-canvas {
+  width: 100%;
+  min-height: 360px;
+}
+
+.figure-error {
+  border: 1px solid #e3b4b4;
+  background: #fff3f3;
+  color: #7d2f2f;
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.figure-meta {
+  margin-top: 12px;
+  color: #697386;
+  font-size: 12px;
+}
+
+/* ===== Editor visual inicial de gráficos ===== */
+.figure-edit-target {
+  cursor: pointer;
+  border-radius: 6px;
+}
+.figure-edit-target:hover {
+  outline: 2px solid #a7bed4;
+  outline-offset: 3px;
+}
+.figure-edit-target.figure-selected {
+  outline: 2px solid #315a7d;
+  outline-offset: 3px;
+}
+#figure-properties input[type="number"] {
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid #ccd3dc;
+  border-radius: 9px;
+  padding: 8px 10px;
+  font: inherit;
+}
+
+.sample-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+
+/* ===== Seleção direta de elementos do gráfico ===== */
+.figure-interaction-wrap {
+  position: relative;
+}
+
+.figure-hitbox {
+  position: absolute;
+  z-index: 5;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.figure-hitbox:hover {
+  outline: 2px dashed #7ea2c4;
+  outline-offset: 2px;
+}
+
+.figure-hitbox.active {
+  outline: 2px solid #315a7d;
+  outline-offset: 2px;
+}
+
+.figure-hitbox-title {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 58px;
+}
+
+.figure-hitbox-xaxis {
+  left: 10%;
+  bottom: 0;
+  width: 75%;
+  height: 64px;
+}
+
+.figure-hitbox-yaxis {
+  left: 0;
+  top: 12%;
+  width: 88px;
+  height: 72%;
+}
+
+.figure-hitbox-legend {
+  right: 0;
+  top: 12%;
+  width: 150px;
+  height: 58%;
+}
+
+.figure-hitbox-plot {
+  left: 90px;
+  top: 64px;
+  right: 160px;
+  bottom: 70px;
+}
+
+#axis-controls input[type="number"] {
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid #ccd3dc;
+  border-radius: 9px;
+  padding: 8px 10px;
+  font: inherit;
+}
+
+.figure-selection-help {
+  margin-top: 10px;
+  color: #697386;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+
+/* ===== Seleção visual mais discreta ===== */
+.figure-hitbox:hover {
+  outline: 1px dashed rgba(49, 90, 125, 0.45) !important;
+  outline-offset: 1px !important;
+  background: rgba(49, 90, 125, 0.025);
+}
+
+.figure-hitbox.active {
+  outline: 1px solid rgba(49, 90, 125, 0.55) !important;
+  outline-offset: 1px !important;
+  background: rgba(49, 90, 125, 0.035);
+}
+
+
+.legend-items-heading {
+  margin-top: 18px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: #697386;
+}
+
+.legend-items-editor {
+  display: grid;
+  gap: 10px;
+}
+
+.legend-item-card {
+  border: 1px solid #e1e6ec;
+  border-radius: 10px;
+  padding: 10px;
+  background: #fafbfc;
+}
+
+.legend-item-topline {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 9px;
+  align-items: center;
+}
+
+.legend-color-input {
+  width: 34px;
+  height: 34px;
+  padding: 2px;
+  border: 1px solid #ccd3dc;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+}
+
+.legend-label-input {
+  width: 100%;
+  min-height: 36px;
+  border: 1px solid #ccd3dc;
+  border-radius: 8px;
+  padding: 7px 9px;
+  font: inherit;
+}
+
+.legend-source-name {
+  margin-top: 6px;
+  color: #7a8493;
+  font-size: 11px;
+}
+
+#legend-advanced-controls select {
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid #ccd3dc;
+  border-radius: 9px;
+  padding: 7px 9px;
+  background: white;
+  font: inherit;
+}
+
+
+.prototype-version {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 4px 8px;
+  border: 1px solid #cfd7e1;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #526172;
+  background: white;
+}
+
+.legend-items-section {
+  margin-top: 4px;
+}
+
+.legend-control-field[hidden],
+.legend-items-section[hidden] {
+  display: none !important;
+}
+
+
+/* ===== Editor de série ===== */
+.series-editor-section {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #e8edf2;
+}
+
+.series-editor-section input[type="number"],
+.series-editor-section input[type="text"] {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid #ccd3dc;
+  border-radius: 8px;
+  padding: 7px 9px;
+  font: inherit;
+}
+
+.series-editor-section input[type="color"] {
+  width: 100%;
+  height: 38px;
+  border: 1px solid #ccd3dc;
+  border-radius: 8px;
+  padding: 3px;
+  background: white;
+}
+
+.legend-item-card {
+  cursor: pointer;
+}
+
+.legend-item-card:hover {
+  border-color: #9eb4c8;
+}
+
+.legend-item-card.series-selected {
+  border-color: #315a7d;
+  box-shadow: 0 0 0 1px rgba(49, 90, 125, 0.16);
+  background: #f5f8fb;
+}
+
+
+.series-browser-section {
+  margin-top: 18px;
+}
+
+.series-browser {
+  display: grid;
+  gap: 8px;
+}
+
+.series-browser-button {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 9px;
+  align-items: center;
+  border: 1px solid #dfe5ec;
+  border-radius: 9px;
+  padding: 8px 10px;
+  background: #fbfcfd;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+}
+
+.series-browser-button:hover {
+  border-color: #9eb4c8;
+  background: #f6f9fb;
+}
+
+.series-browser-button.active {
+  border-color: #315a7d;
+  background: #f3f7fa;
+}
+
+.series-browser-swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,.18);
+}
+
+
+#scatter-series-controls,
+#facet-override-controls {
+  margin-top: 14px;
+}
+
+#scatter-series-controls select,
+#facet-override-controls select,
+#scatter-series-controls input[type="number"],
+#facet-override-controls input[type="color"] {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid #ccd3dc;
+  border-radius: 8px;
+  padding: 7px 9px;
+  background: white;
+  font: inherit;
+}
+
+#facet-panel-color {
+  height: 40px;
+  padding: 3px !important;
+}
+
+
+.facet-panel-buttons {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.facet-panel-button {
+  width: 100%;
+  border: 1px solid #dfe5ec;
+  border-radius: 9px;
+  padding: 8px 10px;
+  background: #fbfcfd;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+}
+
+.facet-panel-button:hover {
+  border-color: #9eb4c8;
+  background: #f6f9fb;
+}
+
+.facet-panel-button.active {
+  border-color: #315a7d;
+  background: #f3f7fa;
+}
+
+/* Em faceted scatter, evitamos hitboxes absolutos grandes sobre os painéis. */
+.figure-interaction-wrap.is-faceted .figure-hitbox-xaxis,
+.figure-interaction-wrap.is-faceted .figure-hitbox-yaxis,
+.figure-interaction-wrap.is-faceted .figure-hitbox-legend,
+.figure-interaction-wrap.is-faceted .figure-hitbox-plot {
+  display: none !important;
+}
+
+
+/* ===== V11: painel contextual compacto ===== */
+
+#properties-panel {
+  max-height: calc(100vh - 36px);
+  overflow: auto;
+}
+
+.context-hidden {
+  display: none !important;
+}
+
+.figure-shell.is-faceted {
+  position: relative;
+}
+
+/* Hitboxes pequenas por elemento, não áreas grandes */
+.facet-hitbox {
+  position: absolute;
+  z-index: 6;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.facet-hitbox:hover {
+  outline: 1px dashed rgba(49, 90, 125, .45);
+  outline-offset: 1px;
+}
+
+.facet-hitbox.active {
+  outline: 1px solid rgba(49, 90, 125, .65);
+  background: rgba(49, 90, 125, .03);
+}
+
+.facet-title-hitbox {
+  height: 28px;
+}
+
+.facet-xaxis-hitbox {
+  height: 42px;
+}
+
+.facet-yaxis-hitbox {
+  width: 56px;
+}
+
+#facet-title-field input {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid #ccd3dc;
+  border-radius: 8px;
+  padding: 7px 9px;
+  font: inherit;
+}
+
+
+/* ===== V13: seleção por camadas na área interna ===== */
+.plot-layer-chooser {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 8px 0 12px;
+  padding: 6px;
+  border: 1px solid #e1e6ec;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.plot-layer-chooser[hidden] {
+  display: none !important;
+}
+
+.plot-layer-label {
+  padding: 0 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #657383;
+}
+
+.plot-layer-chooser button {
+  min-height: 30px;
+  border: 1px solid #ccd5df;
+  border-radius: 7px;
+  padding: 5px 9px;
+  background: white;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+}
+
+.plot-layer-chooser button:hover {
+  border-color: #91a8bd;
+}
+
+.plot-layer-chooser button.active {
+  border-color: #315a7d;
+  background: #edf4f9;
+  box-shadow: 0 0 0 1px rgba(49,90,125,.10);
+}
+
+
+/* ===== V14: sanfonas compactas de propriedades ===== */
+
+.property-accordion {
+  margin: 10px 0;
+  border: 1px solid #e0e6ed;
+  border-radius: 10px;
+  background: #fbfcfd;
+}
+
+.property-accordion > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .045em;
+  color: #536273;
+  user-select: none;
+}
+
+.property-accordion > summary::-webkit-details-marker {
+  display: none;
+}
+
+.property-accordion > summary::after {
+  content: "▾";
+  float: right;
+  transition: transform .16s ease;
+  color: #7a8795;
+}
+
+.property-accordion:not([open]) > summary::after {
+  transform: rotate(-90deg);
+}
+
+.property-accordion-body {
+  padding: 0 12px 12px;
+}
+
+.selected-facet-note {
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #f2f6f9;
+  color: #5f6d7b;
+  font-size: 12px;
+}
+
+.selected-facet-note strong {
+  color: #27384a;
+}
+
+#facet-override-controls .facet-panel-buttons {
+  margin-bottom: 0;
+}
+
+
+/* ===== V16: tipografia, cores e temas ===== */
+#figure-properties select,
+#figure-properties input[type="color"] {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid #ccd3dc;
+  border-radius: 8px;
+  padding: 6px 8px;
+  background: white;
+  font: inherit;
+}
+
+#figure-properties input[type="color"] {
+  padding: 3px;
+  height: 40px;
+}
+
+.figure-shell {
+  transition: background-color .15s ease;
+}
+
+.figure-title,
+.figure-subtitle {
+  transition: color .15s ease;
+}
+
+
+/* ===== V17: zoom da pré-visualização ===== */
+
+.preview-zoom-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 0 0 10px;
+  padding: 6px;
+  border: 1px solid #e1e6ec;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.preview-zoom-toolbar button,
+.preview-zoom-toolbar select {
+  min-height: 32px;
+  border: 1px solid #cdd6df;
+  border-radius: 7px;
+  background: white;
+  padding: 5px 9px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.preview-zoom-toolbar button:hover,
+.preview-zoom-toolbar select:hover {
+  border-color: #91a8bd;
+}
+
+.preview-zoom-toolbar #zoom-out,
+.preview-zoom-toolbar #zoom-in {
+  width: 34px;
+  padding-left: 0;
+  padding-right: 0;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.zoom-fit-button {
+  font-weight: 700;
+}
+
+.preview-zoom-viewport {
+  width: 100%;
+  overflow: auto;
+}
+
+.preview-zoom-stage {
+  transform-origin: top left;
+  width: max-content;
+  min-width: 100%;
+}
+
+/*
+ * Quando está em "ajustar à largura", queremos evitar barra horizontal.
+ * O JS dimensiona a altura do viewport para compensar o transform.
+ */
+.preview-zoom-viewport.fit-width {
+  overflow-x: hidden;
+}
+
+/*
+ * A área do artefato mantém o tamanho natural.
+ * O zoom é só uma transformação visual da pré-visualização,
+ * não altera parâmetros do Contract V2.
+ */
+#artifact-view {
+  transform-origin: top left;
+}
+
+/* ===== V18: zoom compacto abaixo da pré-visualização ===== */
+.preview-zoom-toolbar-bottom {
+  width: fit-content;
+  max-width: 100%;
+  margin: 8px 0 2px;
+  padding: 4px 6px;
+  gap: 4px;
+  background: transparent;
+  border-color: #e5e9ee;
+}
+.preview-zoom-toolbar-bottom .zoom-caption {
+  font-size: 11px;
+  font-weight: 700;
+  color: #718096;
+  padding: 0 3px;
+}
+.preview-zoom-toolbar-bottom button,
+.preview-zoom-toolbar-bottom select {
+  min-height: 28px;
+  height: 28px;
+  padding: 2px 7px;
+  font-size: 11px;
+}
+.preview-zoom-toolbar-bottom #zoom-out,
+.preview-zoom-toolbar-bottom #zoom-in {
+  width: 28px;
+  font-size: 16px;
+}
+
+/* ===== V19: editor contextual de tabelas ===== */
+.color-reset-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px;
+  align-items: center;
+}
+.color-reset-row input[type="color"] {
+  width: 100%;
+  min-height: 36px;
+  border: 1px solid #ccd3dc;
+  border-radius: 8px;
+  padding: 3px;
+  background: white;
+}
+.mini-reset {
+  min-height: 36px;
+  border: 1px solid #ccd3dc;
+  border-radius: 8px;
+  background: white;
+  padding: 5px 8px;
+  cursor: pointer;
+  font-size: 11px;
+}
+.selector-corner button {
+  width: 26px;
+  height: 26px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  color: #718096;
+}
+.selector-corner button:hover {
+  background: #eaf0f5;
+  color: #334155;
+}
+.table-shell.table-selected {
+  outline: 2px solid #6b91b2;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.stat-table {
+  transition: background-color .12s ease, color .12s ease;
+}
+
+
+/* ===== V20: cascata determinística de tabela ===== */
+
+/* A interface precisa conseguir DESLIGAR estilos que vieram do JSON original. */
+.stat-table td.cell-not-bold,
+.stat-table th.cell-not-bold {
+  font-weight: 400 !important;
+}
+
+.stat-table td.cell-not-italic,
+.stat-table th.cell-not-italic {
+  font-style: normal !important;
+}
+
+.stat-table tr[data-bold="false"] > td {
+  font-weight: 400 !important;
+}
+
+.stat-table tr[data-italic="false"] > td {
+  font-style: normal !important;
+}
+
+/*
+ * row-label e cabeçalhos têm estilo visual padrão, mas um override
+ * explícito do editor sempre vence.
+ */
+.stat-table .row-label.cell-not-bold {
+  font-weight: 400 !important;
+}
+
+.stat-table thead th.cell-not-bold {
+  font-weight: 400 !important;
+}
+
+/* Coluna selecionada não deve mascarar background escolhido. */
+.stat-table td.column-selected,
+.stat-table th.column-selected {
+  background-clip: padding-box;
+}
+
+
+/* ===== V21: contexto exclusivo + temas de tabela ===== */
+
+#figure-properties.force-hidden,
+#figure-properties[hidden] {
+  display: none !important;
+}
+
+#table-theme-accordion[hidden] {
+  display: none !important;
+}
+
+.table-shell {
+  background: var(--table-bg, #fff);
+  color: var(--table-text, #172033);
+  font-family: var(--table-font, system-ui);
+}
+
+.table-shell .stat-table {
+  color: inherit;
+  font-family: inherit;
+}
+
+.table-shell .stat-table th {
+  background: var(--table-header-bg, #f5f7fa);
+  border-color: var(--table-border, #d7dde5) !important;
+}
+
+.table-shell .stat-table td {
+  background-color: var(--table-bg, #fff);
+  border-color: var(--table-border, #d7dde5) !important;
+}
+
+/* O estilo explícito de célula/linha/coluna continua vencendo por inline/class. */
+.table-shell.table-theme-striped tbody tr:nth-child(even) td,
+.table-shell.table-theme-soft tbody tr:nth-child(even) td {
+  background-color: var(--table-stripe, #f8fafc);
+}
+
+.table-shell.table-theme-dark .row-selector,
+.table-shell.table-theme-dark .selector-corner {
+  background: var(--table-header-bg);
+}
+
+.table-shell.table-theme-dark button {
+  color: var(--table-text);
+}
+
+/* Acadêmico: visual mais próximo de tabelas científicas, com menos grade vertical. */
+.table-shell.table-theme-academic .stat-table td,
+.table-shell.table-theme-academic .stat-table th {
+  border-left-color: transparent !important;
+  border-right-color: transparent !important;
+}
+
+.table-shell.table-theme-academic .stat-table thead th {
+  border-top: 1.5px solid var(--table-border) !important;
+  border-bottom: 1.5px solid var(--table-border) !important;
+}
+
+/* Densidade / espaçamento */
+.table-shell.table-density-compact .stat-table td,
+.table-shell.table-density-compact .stat-table th {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.table-shell.table-density-normal .stat-table td,
+.table-shell.table-density-normal .stat-table th {
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+.table-shell.table-density-comfortable .stat-table td,
+.table-shell.table-density-comfortable .stat-table th {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+#table-theme-accordion input[type="color"],
+#table-theme-accordion select {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid #ccd3dc;
+  border-radius: 8px;
+  padding: 5px 8px;
+  background: white;
+  font: inherit;
+}
+
+
+/* ===== V22: separação rígida tabela x gráfico ===== */
+
+#figure-properties.force-hidden,
+#figure-properties.force-hidden *,
+#figure-properties[hidden] {
+  display: none !important;
+}
+
+#plot-layer-chooser[hidden] {
+  display: none !important;
+}
+
+#column-name-field[hidden] {
+  display: none !important;
+}
+
+#prop-column-name {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid #ccd3dc;
+  border-radius: 8px;
+  padding: 7px 9px;
+  font: inherit;
+}
+
+/* ===== V23: estrutura corrigida do editor ===== */
+#properties-panel > #figure-properties[hidden],
+#properties-panel > #figure-properties.force-hidden {
+  display: none !important;
+}
+#properties-panel > #row-properties[hidden] {
+  display: none !important;
+}
+#artifact-view-panel > .preview-zoom-toolbar-bottom {
+  margin-top: 8px;
+}
+
+
+/* ===== V24: edição de cabeçalho e conteúdo de célula ===== */
+
+#column-name-field[hidden],
+#cell-value-field[hidden] {
+  display: none !important;
+}
+
+#prop-column-name,
+#prop-cell-value {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccd3dc;
+  border-radius: 8px;
+  padding: 8px 9px;
+  font: inherit;
+  background: white;
+  color: #172033;
+}
+
+#prop-column-name {
+  min-height: 38px;
+}
+
+#prop-cell-value {
+  min-height: 72px;
+  resize: vertical;
+  line-height: 1.35;
+}
+
+
+/* ===== V25: formatação numérica ===== */
+.field-help {
+  margin-top: 5px;
+  color: #718096;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+/* ===== V26: metadados textuais da tabela ===== */
+#table-text-accordion[hidden] { display: none !important; }
+#table-title,
+#table-subtitle,
+#table-notes {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccd3dc;
+  border-radius: 8px;
+  padding: 8px 9px;
+  font: inherit;
+  line-height: 1.35;
+  resize: vertical;
+  background: #fff;
+  color: #172033;
+}
+
+
+/* ===== V27: color inputs sem ícone auxiliar do navegador ===== */
+/*
+ * Mantém o seletor de cor e a amostra clicável, mas remove decorações
+ * auxiliares (picker/eyedropper) que alguns navegadores inserem e que
+ * podem deformar o painel lateral.
+ */
+input[type="color"] {
+  appearance: none;
+  -webkit-appearance: none;
+  inline-size: 100% !important;
+  min-inline-size: 0 !important;
+  overflow: hidden;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 2px !important;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: 0 !important;
+  border-radius: 6px;
+}
+
+input[type="color"]::-moz-color-swatch {
+  border: 0 !important;
+  border-radius: 6px;
+}
+
+input[type="color"]::-webkit-calendar-picker-indicator,
+input[type="color"]::-webkit-inner-spin-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+}
+
+
+/* ===== V28: remoção estrutural de linha/coluna ===== */
+
+.table-structure-actions {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.table-structure-actions[hidden] {
+  display: none !important;
+}
+
+.danger-button {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid #d7a7a7;
+  border-radius: 8px;
+  background: #fff7f7;
+  color: #8f2f2f;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.danger-button:hover {
+  background: #fdecec;
+  border-color: #c98585;
+}
+
+.danger-button[hidden] {
+  display: none !important;
+}
+
+/* ===== V29: desfazer ===== */
+.undo-edit-button { margin-left:auto; font-weight:700 !important; }
+.undo-edit-button:disabled { opacity:.45; cursor:default !important; }
+
+
+/* ===== V30: undo funcional ===== */
+.undo-edit-button:not(:disabled) {
+  border-color: #91a8bd !important;
+  background: #f4f8fb !important;
+  color: #294b68 !important;
+}
+
+
+/* ===== V31: salvar alterações / salvar tema ===== */
+
+.toolbar-separator {
+  width: 1px;
+  height: 22px;
+  background: #d9e0e7;
+  margin: 0 2px;
+}
+
+.save-action-button {
+  font-weight: 700 !important;
+}
+
+#save-changes {
+  border-color: #91a8bd;
+  background: #f4f8fb;
+  color: #294b68;
+}
+
+#save-theme {
+  border-color: #b6c4ae;
+  background: #f7faf5;
+  color: #45603b;
+}
+
+/* ===== V32: carregar alterações / tema ===== */
+.hidden-file-input {
+  display: none !important;
+}
+.load-action-button {
+  font-weight: 700 !important;
+  border-color: #c5b7d5 !important;
+  background: #faf7fd !important;
+  color: #59436e !important;
+}
+
+
+/* ===== V33: exportação de gráficos ===== */
+
+.export-action-button {
+  font-weight: 800 !important;
+  border-color: #b9c7d4 !important;
+  background: #f8fbfd !important;
+  color: #294b68 !important;
+}
+
+.export-action-button:disabled {
+  opacity: .4;
+  cursor: default !important;
+}
+
+
+/* ===== V34: exportação de tabelas ===== */
+
+.table-export-button {
+  border-color: #b9c9b5 !important;
+  background: #f7fbf5 !important;
+  color: #3f5f39 !important;
+}
+
+.table-export-button:disabled {
+  opacity: .4;
+  cursor: default !important;
+}
+
+
+/* ===== V35: exportação contextual ===== */
+.export-action-button[hidden] {
+  display: none !important;
+}
+
+/* ===== V37: PNG/SVG para tabelas ===== */
+.table-export-stage {
+  position: fixed;
+  left: -100000px;
+  top: 0;
+  z-index: -1;
+  display: block;
+  width: max-content;
+  max-width: none;
+  padding: 24px;
+  margin: 0;
+  background: #fff;
+  overflow: visible;
+  pointer-events: none;
+}
+.table-export-stage .export-table-content,
+.table-export-stage .table-shell {
+  width: max-content !important;
+  max-width: none !important;
+  overflow: visible !important;
+}
+.table-export-stage .stat-table {
+  width: auto !important;
+  max-width: none !important;
+  table-layout: auto !important;
+}
+
+
+/* ===== V40 standalone ===== */
+.topbar-actions {
+  align-items: center;
+}
+
+.prototype-version {
+  opacity: .72;
+}

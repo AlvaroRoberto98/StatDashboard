@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StatDashboard</title>
+  <link rel="stylesheet" href="css/app.css?v=41">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">STAT DASHBOARD</p>
+        <h1>Resultados estatísticos</h1>
+        <p class="subtitle">Projetos, tabelas e gráficos</p>
+        <div class="prototype-version">V41 standalone</div>
+      </div>
+
+      <div class="topbar-actions">
+        <button id="reload-index" class="secondary-button" type="button">
+          Atualizar projetos
+        </button>
+      </div>
+    </header>
+
+    <section class="panel controls-panel">
+      <div class="field">
+        <label for="project-select">Projeto</label>
+        <select id="project-select"></select>
+      </div>
+
+      <div class="field">
+        <label for="kind-select">Tipo</label>
+        <select id="kind-select">
+          <option value="table">Tabelas</option>
+          <option value="figure">Gráficos</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="artifact-select">Artefato</label>
+        <select id="artifact-select"></select>
+      </div>
+
+      <div class="field">
+        <label for="version-select">Versão</label>
+        <select id="version-select"></select>
+      </div>
+
+      <div class="actions">
+        <button id="load-artifact" class="primary-button" type="button">
+          Carregar
+        </button>
+      </div>
+    </section>
+<section class="panel status-panel">
+      <div class="status-row">
+        <span id="status-dot" class="status-dot"></span>
+        <strong id="status-text">Aguardando carregamento...</strong>
+      </div>
+
+      <dl class="summary-grid">
+        <div>
+          <dt>Projeto</dt>
+          <dd id="summary-project">—</dd>
+        </div>
+        <div>
+          <dt>Artefato</dt>
+          <dd id="summary-artifact">—</dd>
+        </div>
+        <div>
+          <dt>Tipo</dt>
+          <dd id="summary-type">—</dd>
+        </div>
+        <div>
+          <dt>Versão</dt>
+          <dd id="summary-version">—</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="editor-layout">
+      <section id="artifact-view-panel" class="panel artifact-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">PRÉ-VISUALIZAÇÃO</p>
+            <h2 id="artifact-view-title">Nenhum artefato carregado</h2>
+          </div>
+        </div>
+
+        <div id="preview-zoom-viewport" class="preview-zoom-viewport">
+          <div id="preview-zoom-stage" class="preview-zoom-stage">
+            <div id="artifact-view" class="artifact-view empty-state">
+              Selecione um artefato e clique em <strong>Carregar</strong>.
+            </div>
+          </div>
+        </div>
+        <div id="preview-zoom-toolbar" class="preview-zoom-toolbar preview-zoom-toolbar-bottom">
+          <span class="zoom-caption">Zoom</span>
+          <button id="zoom-out" type="button" title="Diminuir zoom">−</button>
+          <select id="zoom-level" aria-label="Zoom da pré-visualização">
+            <option value="0.50">50%</option><option value="0.60">60%</option><option value="0.75">75%</option><option value="0.85">85%</option><option value="1.00" selected>100%</option><option value="1.15">115%</option><option value="1.25">125%</option><option value="1.50">150%</option>
+          </select>
+          <button id="zoom-in" type="button" title="Aumentar zoom">+</button>
+          <button id="zoom-fit" class="zoom-fit-button" type="button">Ajustar</button>
+          <button id="zoom-reset" type="button">100%</button><button id="undo-edit" class="undo-edit-button" type="button" title="Desfazer última alteração (Ctrl+Z)" disabled>↶ Desfazer</button>
+          <span class="toolbar-separator" aria-hidden="true"></span>
+          <button id="save-changes" class="save-action-button" type="button" title="Salvar o artefato completo editado">Salvar alterações</button>
+          <button id="save-theme" class="save-action-button" type="button" title="Salvar apenas a aparência reutilizável">Salvar tema</button>
+          <button id="load-changes" class="load-action-button" type="button" title="Carregar um artefato editado salvo anteriormente">Carregar alterações</button>
+          <button id="load-theme" class="load-action-button" type="button" title="Aplicar um tema JSON ao artefato atual">Carregar tema</button>
+          <span class="toolbar-separator" aria-hidden="true"></span>
+          <button id="export-png" class="export-action-button" type="button" title="Exportar artefato em PNG">
+            PNG
+          </button>
+          <button id="export-svg" class="export-action-button" type="button" title="Exportar artefato em SVG">
+            SVG
+          </button>
+          <button id="open-table-html" class="export-action-button table-export-button" type="button" title="Abrir tabela em uma página HTML limpa">
+            Abrir HTML
+          </button>
+          <button id="export-table-html" class="export-action-button table-export-button" type="button" title="Baixar tabela formatada em HTML">
+            HTML
+          </button>
+          <input id="load-changes-file" class="hidden-file-input" type="file" accept=".json,application/json">
+          <input id="load-theme-file" class="hidden-file-input" type="file" accept=".json,application/json">
+        </div>
+      </section>
+
+      <aside id="properties-panel" class="panel properties-panel">
+        <p class="eyebrow">PROPRIEDADES</p>
+        <h2 id="properties-title">Nada selecionado</h2>
+
+        <div id="properties-empty" class="properties-empty">
+          Clique em uma célula, no botão à esquerda de uma linha,
+          ou no botão acima de uma coluna.
+        </div>
+
+        <div id="row-properties" class="row-properties" hidden>
+          <div class="selection-kind" id="selection-kind">Seleção</div>
+
+          <details id="table-text-accordion" class="property-accordion" hidden open>
+            <summary>Título, subtítulo e notas</summary>
+            <div class="property-accordion-body">
+              <div class="field"><label for="table-title">Título</label><textarea id="table-title" rows="3"></textarea></div>
+              <div class="field"><label for="table-subtitle">Subtítulo</label><textarea id="table-subtitle" rows="2" placeholder="Opcional"></textarea></div>
+              <div class="field">
+                <label for="table-notes">Notas</label>
+                <textarea id="table-notes" rows="4" placeholder="Ex.: ᵃ Teste t de Student..."></textarea>
+                <div class="field-help">O prefixo “Nota.” é exibido automaticamente. Digite apenas o conteúdo da nota.</div>
+              </div>
+            </div>
+          </details>
+
+          <details id="table-theme-accordion" class="property-accordion" hidden>
+            <summary>Tema da tabela</summary>
+            <div class="property-accordion-body">
+              <div class="field">
+                <label for="table-theme">Tema</label>
+                <select id="table-theme">
+                  <option value="clean">Clean</option>
+                  <option value="academic">Acadêmico</option>
+                  <option value="soft">Suave</option>
+                  <option value="striped">Listrado</option>
+                  <option value="dark">Escuro</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="table-density">Espaçamento</label>
+                <select id="table-density">
+                  <option value="compact">Compacto</option>
+                  <option value="normal">Normal</option>
+                  <option value="comfortable">Amplo</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="table-decimal-separator">Separador decimal</label>
+                <select id="table-decimal-separator">
+                  <option value="original">Manter original</option>
+                  <option value="comma">Vírgula (,)</option>
+                  <option value="dot">Ponto (.)</option>
+                </select>
+                <div class="field-help">
+                  Altera apenas separadores entre números. Textos como “Sexo, n (%)” não são modificados.
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="table-global-font">Fonte global</label>
+                <select id="table-global-font">
+                  <option value="system-ui">Sistema</option>
+                  <option value="Arial">Arial</option>
+                  <option value="Verdana">Verdana</option>
+                  <option value="Georgia">Georgia</option>
+                  <option value="Times New Roman">Times New Roman</option>
+                  <option value="Trebuchet MS">Trebuchet MS</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="table-header-background">Fundo do cabeçalho</label>
+                <input id="table-header-background" type="color" value="#f5f7fa">
+              </div>
+
+              <div class="field">
+                <label for="table-border-color">Cor das linhas</label>
+                <input id="table-border-color" type="color" value="#d7dde5">
+              </div>
+            </div>
+          </details>
+
+          <div id="column-name-field" class="field" hidden>
+            <label for="prop-column-name">Cabeçalho da coluna</label>
+            <input id="prop-column-name" type="text">
+          </div>
+
+          <div id="cell-value-field" class="field" hidden>
+            <label for="prop-cell-value">Conteúdo da célula</label>
+            <textarea id="prop-cell-value" rows="3"></textarea>
+          </div>
+
+          <details class="property-accordion" open>
+            <summary>Texto e aparência</summary>
+            <div class="property-accordion-body">
+              <label class="switch-row">
+                <input id="prop-bold" type="checkbox">
+                <span>Negrito</span>
+              </label>
+              <label class="switch-row">
+                <input id="prop-italic" type="checkbox">
+                <span>Itálico</span>
+              </label>
+
+              <div class="field">
+                <label for="prop-font">Fonte</label>
+                <select id="prop-font">
+                  <option value="">Padrão</option>
+                  <option value="system-ui">Sistema</option>
+                  <option value="Arial">Arial</option>
+                  <option value="Verdana">Verdana</option>
+                  <option value="Georgia">Georgia</option>
+                  <option value="Times New Roman">Times New Roman</option>
+                  <option value="Trebuchet MS">Trebuchet MS</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="prop-font-size">Tamanho da fonte</label>
+                <input id="prop-font-size" type="number" min="8" max="40" step="1" placeholder="Padrão">
+              </div>
+
+              <div class="field">
+                <label for="prop-align">Alinhamento</label>
+                <select id="prop-align">
+                  <option value="">Padrão</option>
+                  <option value="left">Esquerda</option>
+                  <option value="center">Centro</option>
+                  <option value="right">Direita</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="prop-color">Cor do texto</label>
+                <div class="color-reset-row">
+                  <input id="prop-color" type="color" value="#172033">
+                  <button id="prop-color-reset" class="mini-reset" type="button">Padrão</button>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="prop-background">Cor de fundo</label>
+                <div class="color-reset-row">
+                  <input id="prop-background" type="color" value="#ffffff">
+                  <button id="prop-background-reset" class="mini-reset" type="button">Sem fundo</button>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="property-accordion">
+            <summary>Bordas</summary>
+            <div class="property-accordion-body">
+              <label class="switch-row"><input id="prop-border-top" type="checkbox"><span>Linha acima</span></label>
+              <label class="switch-row"><input id="prop-border-bottom" type="checkbox"><span>Linha abaixo</span></label>
+              <label class="switch-row"><input id="prop-border-left" type="checkbox"><span>Linha à esquerda</span></label>
+              <label class="switch-row"><input id="prop-border-right" type="checkbox"><span>Linha à direita</span></label>
+            </div>
+          </details>
+
+          <label id="prop-hidden-row" class="switch-row danger-row">
+            <input id="prop-hidden" type="checkbox">
+            <span id="prop-hidden-label">Ocultar seleção</span>
+          </label>
+
+          <div id="table-structure-actions" class="table-structure-actions" hidden>
+            <button id="delete-row" class="danger-button" type="button" hidden>
+              Remover linha
+            </button>
+            <button id="delete-column" class="danger-button" type="button" hidden>
+              Remover coluna
+            </button>
+          </div>
+
+          <div class="properties-actions">
+            <button id="reset-row-style" class="secondary-button" type="button">
+              Restaurar seleção
+            </button>
+          </div>
+        </div>
+
+        <div id="figure-properties" class="row-properties" hidden>
+          <div class="selection-kind" id="figure-selection-kind">Gráfico</div>
+
+          <div id="plot-layer-chooser" class="plot-layer-chooser" hidden>
+            <span class="plot-layer-label">Editar</span>
+            <button id="plot-layer-graph" type="button" data-plot-layer="graph">Área do gráfico</button>
+            <button id="plot-layer-marks" type="button" data-plot-layer="series">Marcas</button>
+          </div>
+
+          <div class="field">
+            <label for="fig-title">Título</label>
+            <input id="fig-title" type="text">
+          </div>
+          <div class="field">
+            <label for="fig-subtitle">Subtítulo</label>
+            <input id="fig-subtitle" type="text">
+          </div>
+          <div class="field title-style-field">
+            <label for="fig-title-font">Fonte do título</label>
+            <select id="fig-title-font">
+              <option value="system-ui">Sistema</option><option value="Arial">Arial</option><option value="Verdana">Verdana</option><option value="Georgia">Georgia</option><option value="Times New Roman">Times New Roman</option><option value="Trebuchet MS">Trebuchet MS</option>
+            </select>
+          </div>
+          <div class="field title-style-field">
+            <label for="fig-title-size">Tamanho do título</label>
+            <input id="fig-title-size" type="number" min="10" max="48" step="1">
+          </div>
+          <div class="field title-style-field">
+            <label for="fig-title-color">Cor do título</label>
+            <input id="fig-title-color" type="color">
+          </div>
+
+          <div class="field"><label for="fig-x-title">Título do eixo X</label><input id="fig-x-title" type="text"></div>
+          <div class="field x-axis-style-field"><label for="fig-x-font">Fonte do eixo X</label><select id="fig-x-font"><option value="system-ui">Sistema</option><option value="Arial">Arial</option><option value="Verdana">Verdana</option><option value="Georgia">Georgia</option><option value="Times New Roman">Times New Roman</option><option value="Trebuchet MS">Trebuchet MS</option></select></div>
+          <div class="field x-axis-style-field"><label for="fig-x-color">Cor do texto do eixo X</label><input id="fig-x-color" type="color"></div>
+          <div class="field x-axis-style-field"><label for="fig-x-line-color">Cor da linha do eixo X</label><input id="fig-x-line-color" type="color"></div>
+
+          <div class="field"><label for="fig-y-title">Título do eixo Y</label><input id="fig-y-title" type="text"></div>
+          <div class="field y-axis-style-field"><label for="fig-y-font">Fonte do eixo Y</label><select id="fig-y-font"><option value="system-ui">Sistema</option><option value="Arial">Arial</option><option value="Verdana">Verdana</option><option value="Georgia">Georgia</option><option value="Times New Roman">Times New Roman</option><option value="Trebuchet MS">Trebuchet MS</option></select></div>
+          <div class="field y-axis-style-field"><label for="fig-y-color">Cor do texto do eixo Y</label><input id="fig-y-color" type="color"></div>
+          <div class="field y-axis-style-field"><label for="fig-y-line-color">Cor da linha do eixo Y</label><input id="fig-y-line-color" type="color"></div>
+
+          <div id="axis-controls">
+            <div class="field"><label for="fig-x-min">Mínimo do eixo X</label><input id="fig-x-min" type="number" step="any"></div>
+            <div class="field"><label for="fig-x-max">Máximo do eixo X</label><input id="fig-x-max" type="number" step="any"></div>
+            <div class="field"><label for="fig-y-min">Mínimo do eixo Y</label><input id="fig-y-min" type="number" step="any"></div>
+            <div class="field"><label for="fig-y-max">Máximo do eixo Y</label><input id="fig-y-max" type="number" step="any"></div>
+          </div>
+
+          <details id="graph-general-accordion" class="property-accordion">
+            <summary>Ajustes gerais</summary>
+            <div class="property-accordion-body">
+              <div class="field"><label for="fig-theme">Tema</label><select id="fig-theme"><option value="clean">Clean</option><option value="soft">Cinza suave</option><option value="paper">Papel</option><option value="dark">Escuro</option></select></div>
+              <div class="field"><label for="fig-global-font">Fonte global</label><select id="fig-global-font"><option value="system-ui">Sistema</option><option value="Arial">Arial</option><option value="Verdana">Verdana</option><option value="Georgia">Georgia</option><option value="Times New Roman">Times New Roman</option><option value="Trebuchet MS">Trebuchet MS</option></select></div>
+              <div class="field"><label for="fig-background-color">Fundo externo</label><input id="fig-background-color" type="color"></div>
+              <div class="field"><label for="fig-plot-background-color">Fundo da área do gráfico</label><input id="fig-plot-background-color" type="color"></div>
+              <div class="field"><label for="fig-grid-color">Cor da grade</label><input id="fig-grid-color" type="color"></div>
+              <div class="field"><label for="fig-height">Altura</label><input id="fig-height" type="number" min="180" step="20"></div>
+              <div class="field"><label for="fig-point-size">Tamanho dos pontos</label><input id="fig-point-size" type="number" min="10" step="5"></div>
+              <div class="field"><label for="fig-opacity">Opacidade</label><input id="fig-opacity" type="number" min="0" max="1" step="0.05"></div>
+            </div>
+          </details>
+
+          <label class="switch-row"><input id="fig-legend-visible" type="checkbox" checked><span>Mostrar legenda</span></label>
+          <div class="field"><label for="fig-legend-title">Título da legenda</label><input id="fig-legend-title" type="text"></div>
+          <div class="field legend-control-field"><label for="fig-legend-position">Posição da legenda</label><select id="fig-legend-position"><option value="right">Direita</option><option value="left">Esquerda</option><option value="top">Acima</option><option value="bottom">Abaixo</option></select></div>
+          <div class="field legend-control-field"><label for="fig-legend-theme">Tema da legenda</label><select id="fig-legend-theme"><option value="none">Sem caixa</option><option value="soft">Caixa suave</option><option value="outline">Somente borda</option><option value="solid">Caixa sólida</option></select></div>
+          <div id="legend-items-section" class="legend-items-section"><div class="legend-items-heading">Itens da legenda</div><div id="legend-items-editor" class="legend-items-editor"></div></div>
+
+          <div id="series-browser-section" class="series-browser-section" hidden><div class="legend-items-heading">Séries / categorias</div><div id="series-browser" class="series-browser"></div></div>
+          <div id="scatter-series-controls" hidden>
+            <div class="field"><label for="series-point-size">Tamanho do ponto</label><input id="series-point-size" type="number" min="5" step="5"></div>
+            <div class="field"><label for="series-point-shape">Formato do ponto</label><select id="series-point-shape"><option value="circle">Círculo</option><option value="square">Quadrado</option><option value="diamond">Losango</option><option value="triangle-up">Triângulo</option><option value="cross">Cruz</option></select></div>
+          </div>
+
+          <div id="facet-override-controls" hidden>
+            <details id="facet-panels-accordion" class="property-accordion" open><summary>Painéis</summary><div class="property-accordion-body"><div class="field" id="facet-title-field" hidden><label for="facet-title-value">Nome do painel</label><input id="facet-title-value" type="text"></div><div id="facet-panel-buttons" class="facet-panel-buttons"></div></div></details>
+            <details id="facet-override-accordion" class="property-accordion"><summary>Sobrescrever por painel</summary><div class="property-accordion-body"><div class="selected-facet-note">Painel selecionado: <strong id="selected-facet-name">—</strong></div><div class="field"><label for="facet-panel-color">Cor específica do painel</label><input id="facet-panel-color" type="color"></div><button id="facet-panel-clear" class="secondary-button" type="button">Usar cor padrão</button></div></details>
+          </div>
+
+          <div id="series-editor-section" class="series-editor-section" hidden>
+            <div class="legend-items-heading">Série selecionada</div>
+            <div class="field"><label for="series-name">Rótulo</label><input id="series-name" type="text"></div>
+            <div class="field"><label for="series-color">Cor</label><input id="series-color" type="color"></div>
+            <div class="field"><label for="series-opacity">Opacidade</label><input id="series-opacity" type="number" min="0" max="1" step="0.05"></div>
+            <div class="field" id="series-line-width-field"><label for="series-line-width">Espessura da linha</label><input id="series-line-width" type="number" min="0" step="0.25"></div>
+            <label class="switch-row" id="series-fill-field"><input id="series-fill-visible" type="checkbox" checked><span>Mostrar preenchimento</span></label>
+          </div>
+
+          <div id="facet-controls">
+            <div class="field"><label for="fig-facet-columns">Painéis por linha</label><input id="fig-facet-columns" type="number" min="1" step="1"></div>
+            <div class="field"><label for="fig-facet-width">Largura do painel</label><input id="fig-facet-width" type="number" min="120" step="20"></div>
+            <div class="field"><label for="fig-facet-height">Altura do painel</label><input id="fig-facet-height" type="number" min="120" step="20"></div>
+          </div>
+
+          <div class="figure-selection-help">Clique diretamente no título, eixo X, eixo Y, legenda ou área do gráfico para editar aquele elemento.</div>
+          <div class="properties-actions"><button id="reset-figure-style" class="secondary-button" type="button">Restaurar gráfico</button></div>
+        </div>
+      </aside>
+    </section>
+
+    <details class="panel debug-panel">
+      <summary>Diagnóstico: ver JSON carregado</summary>
+      <div class="debug-content">
+        <div id="artifact-url" class="muted"></div>
+        <pre id="json-preview">Nenhum artefato carregado.</pre>
+      </div>
+    </details>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <script src="js/figure-adapters.js?v=41"></script>
+  <script src="js/app.js?v=41"></script>
+</body>
+</html>

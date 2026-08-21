@@ -1,0 +1,144 @@
+{
+  "storage_format_version": "2.0",
+  "artifact": {
+    "kind": "table",
+    "title": "Indicadores de sintomatologia ocular e desfecho composto de conforto aos 15 dias pós-operatórios",
+    "id": "TAB-002",
+    "version": "v001",
+    "project_id": "PRJ-20260101-1011",
+    "project_name": "TRABALHO PTERIGIO X COLA"
+  },
+  "content": {
+    "type": "table",
+    "notes": "ᵃ Teste de Mann-Whitney (Wilcoxon rank sum); ᵇ Teste Exato de Fisher.",
+    "columns": [
+      {
+        "id": "variavel",
+        "name": "Variável",
+        "style": {
+          "align": "left",
+          "bold": true
+        }
+      },
+      {
+        "id": "sutura",
+        "name": "Sutura (n = 12)",
+        "style": {
+          "align": "center",
+          "bold": true
+        }
+      },
+      {
+        "id": "cola",
+        "name": "Cola (n = 35)",
+        "style": {
+          "align": "center",
+          "bold": true
+        }
+      },
+      {
+        "id": "p_valor",
+        "name": "p-valor",
+        "style": {
+          "align": "center",
+          "bold": true
+        }
+      }
+    ],
+    "rows": [
+      {
+        "id": "dor_vas",
+        "cells": {
+          "variavel": "Dor VAS (0-10), mediana [IQR]",
+          "sutura": "0,0 [0,0 – 0,0]",
+          "cola": "0,0 [0,0 – 0,0]",
+          "p_valor": "0,955ᵃ"
+        }
+      },
+      {
+        "id": "uso_analgesico_header",
+        "cells": {
+          "variavel": "Uso de Analgésico, n (%)",
+          "sutura": "",
+          "cola": "",
+          "p_valor": "0,720ᵇ"
+        }
+      },
+      {
+        "id": "uso_analgesico_nao",
+        "cells": {
+          "variavel": "    Não (N)",
+          "sutura": "6 (50,0%)",
+          "cola": "21 (60,0%)",
+          "p_valor": ""
+        }
+      },
+      {
+        "id": "uso_analgesico_sim",
+        "cells": {
+          "variavel": "    Sim (S)",
+          "sutura": "6 (50,0%)",
+          "cola": "14 (40,0%)",
+          "p_valor": ""
+        }
+      },
+      {
+        "id": "sensacao_corpo_estranho_header",
+        "cells": {
+          "variavel": "Sensação de Corpo Estranho, n (%)",
+          "sutura": "",
+          "cola": "",
+          "p_valor": "0,281ᵇ"
+        }
+      },
+      {
+        "id": "sensacao_corpo_estranho_nao",
+        "cells": {
+          "variavel": "    Não (N)",
+          "sutura": "4 (40,0%)",
+          "cola": "22 (62,9%)",
+          "p_valor": ""
+        }
+      },
+      {
+        "id": "sensacao_corpo_estranho_sim",
+        "cells": {
+          "variavel": "    Sim (S)",
+          "sutura": "6 (60,0%)",
+          "cola": "13 (37,1%)",
+          "p_valor": ""
+        }
+      },
+      {
+        "id": "conforto_estrito_header",
+        "style": {
+          "bold": true
+        },
+        "cells": {
+          "variavel": "Conforto Estrito, n (%)",
+          "sutura": "",
+          "cola": "",
+          "p_valor": "0,154ᵇ"
+        }
+      },
+      {
+        "id": "conforto_estrito_nao",
+        "cells": {
+          "variavel": "    Não Atendido (0)",
+          "sutura": "8 (80,0%)",
+          "cola": "18 (51,4%)",
+          "p_valor": ""
+        }
+      },
+      {
+        "id": "conforto_estrito_sim",
+        "cells": {
+          "variavel": "    Sucesso Absoluto (1)",
+          "sutura": "2 (20,0%)",
+          "cola": "17 (48,6%)",
+          "p_valor": ""
+        }
+      }
+    ]
+  }
+}

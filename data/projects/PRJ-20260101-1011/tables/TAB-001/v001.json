@@ -1,0 +1,87 @@
+{
+  "storage_format_version": "2.0",
+  "artifact": {
+    "kind": "table",
+    "title": "Características demográficas iniciais (Baseline) dos pacientes submetidos à cirurgia de pterígio por técnica de fixação",
+    "id": "TAB-001",
+    "version": "v001",
+    "project_id": "PRJ-20260101-1011",
+    "project_name": "TRABALHO PTERIGIO X COLA"
+  },
+  "content": {
+    "type": "table",
+    "notes": "ᵃ Teste t de Student para amostras independentes; ᵇ Teste Exato de Fisher.",
+    "columns": [
+      {
+        "id": "variavel",
+        "name": "Variável",
+        "style": {
+          "align": "left",
+          "bold": true
+        }
+      },
+      {
+        "id": "sutura",
+        "name": "Sutura (n = 12)",
+        "style": {
+          "align": "center",
+          "bold": true
+        }
+      },
+      {
+        "id": "cola",
+        "name": "Cola (n = 35)",
+        "style": {
+          "align": "center",
+          "bold": true
+        }
+      },
+      {
+        "id": "p_valor",
+        "name": "p-valor",
+        "style": {
+          "align": "center",
+          "bold": true
+        }
+      }
+    ],
+    "rows": [
+      {
+        "id": "idade",
+        "cells": {
+          "variavel": "Idade (anos), média ± DP",
+          "sutura": "52,10 ± 11,40",
+          "cola": "53,60 ± 8,97",
+          "p_valor": "0,640ᵃ"
+        }
+      },
+      {
+        "id": "sexo_header",
+        "cells": {
+          "variavel": "Sexo, n (%)",
+          "sutura": "",
+          "cola": "",
+          "p_valor": "0,737ᵇ"
+        }
+      },
+      {
+        "id": "sexo_feminino",
+        "cells": {
+          "variavel": "    Feminino",
+          "sutura": "8 (66,7%)",
+          "cola": "20 (57,1%)",
+          "p_valor": ""
+        }
+      },
+      {
+        "id": "sexo_masculino",
+        "cells": {
+          "variavel": "    Masculino",
+          "sutura": "4 (33,3%)",
+          "cola": "15 (42,9%)",
+          "p_valor": ""
+        }
+      }
+    ]
+  }
+}

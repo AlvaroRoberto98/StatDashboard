@@ -1,0 +1,163 @@
+{
+  "storage_format_version": "2.0",
+  "artifact": {
+    "kind": "figure",
+    "title": "Densidade: Tempo Cirúrgico",
+    "id": "FIG-001",
+    "version": "v001",
+    "project_id": "PRJ-20260101-1011",
+    "project_name": "TRABALHO PTERIGIO X COLA"
+  },
+  "content": {
+    "type": "density",
+    "mapping": {
+      "x": "tempo_cir",
+      "group": "tecnica"
+    },
+    "parameters": {
+      "alpha": 0.4
+    },
+    "data": [
+      {
+        "tempo_cir": 10,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 12,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 12,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 11,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 14,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 14,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 14,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 11,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 9,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 17,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 10,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 9,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 9,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 8,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 19,
+        "tecnica": "Sutura"
+      },
+      {
+        "tempo_cir": 26,
+        "tecnica": "Sutura"
+      },
+      {
+        "tempo_cir": 12,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 10,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 14,
+        "tecnica": "Sutura"
+      },
+      {
+        "tempo_cir": 19,
+        "tecnica": "Sutura"
+      },
+      {
+        "tempo_cir": 15,
+        "tecnica": "Sutura"
+      },
+      {
+        "tempo_cir": 13,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 14,
+        "tecnica": "Sutura"
+      },
+      {
+        "tempo_cir": 18,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 16,
+        "tecnica": "Sutura"
+      },
+      {
+        "tempo_cir": 13,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 8,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 10,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 10,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 7,
+        "tecnica": "Sutura"
+      },
+      {
+        "tempo_cir": 12,
+        "tecnica": "Sutura"
+      },
+      {
+        "tempo_cir": 20,
+        "tecnica": "Sutura"
+      },
+      {
+        "tempo_cir": 13,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 7,
+        "tecnica": "Cola"
+      },
+      {
+        "tempo_cir": 7,
+        "tecnica": "Sutura"
+      }
+    ]
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "storage_format_version": "2.0",
+  "artifact": {
+    "kind": "figure",
+    "title": "Índice de Conforto Pós-Operatório aos 15 dias",
+    "id": "FIG-003",
+    "version": "v001",
+    "project_id": "PRJ-20260101-1011",
+    "project_name": "TRABALHO PTERIGIO X COLA"
+  },
+  "content": {
+    "type": "stacked_bar_percent",
+    "mapping": {
+      "x": "tecnica",
+      "fill": "conforto_estrito"
+    },
+    "labels": {
+      "conforto_estrito": {
+        "0": "Desconforto / Sintomático",
+        "1": "Conforto Estrito"
+      }
+    },
+    "parameters": {
+      "width": 0.5
+    },
+    "axes": {
+      "x": {
+        "title": "Técnica de Fixação"
+      },
+      "y": {
+        "title": "Proporção de Pacientes (%)"
+      }
+    },
+    "legend": {
+      "title": "Status"
+    },
+    "data": [
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 1
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 1
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 1
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 1
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 1
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Sutura",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 1
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 1
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 1
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 1
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 1
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 1
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Sutura",
+        "conforto_estrito": 1
+      },
+      {
+        "tecnica": "Sutura",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Sutura",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 1
+      },
+      {
+        "tecnica": "Sutura",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 1
+      },
+      {
+        "tecnica": "Sutura",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 1
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 1
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Sutura",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Sutura",
+        "conforto_estrito": 0
+      },
+      {
+        "tecnica": "Sutura",
+        "conforto_estrito": 1
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 1
+      },
+      {
+        "tecnica": "Cola",
+        "conforto_estrito": 1
+      },
+      {
+        "tecnica": "Sutura",
+        "conforto_estrito": 0
+      }
+    ]
+  }
+}

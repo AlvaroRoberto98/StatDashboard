@@ -1,0 +1,64 @@
+{
+  "index_format_version": "1.0",
+  "projects": [
+    {
+      "project_id": "PRJ-20260101-1011",
+      "project_name": "TRABALHO PTERIGIO X COLA",
+      "tables": [
+        {
+          "id": "TAB-001",
+          "title": "Características demográficas iniciais (Baseline) dos pacientes submetidos à cirurgia de pterígio por técnica de fixação",
+          "latest_version": 1,
+          "versions": [
+            1
+          ]
+        },
+        {
+          "id": "TAB-002",
+          "title": "Indicadores de sintomatologia ocular e desfecho composto de conforto aos 15 dias pós-operatórios",
+          "latest_version": 1,
+          "versions": [
+            1
+          ]
+        },
+        {
+          "id": "TAB-003",
+          "title": "Demonstrativo financeiro mediano e margem hospitalar por técnica de fixação (Microcusteio real)",
+          "latest_version": 1,
+          "versions": [
+            1
+          ]
+        }
+      ],
+      "figures": [
+        {
+          "id": "FIG-001",
+          "title": "Densidade: Tempo Cirúrgico",
+          "latest_version": 1,
+          "versions": [
+            1
+          ],
+          "type": "density"
+        },
+        {
+          "id": "FIG-002",
+          "title": "Comparação de Medianas",
+          "latest_version": 1,
+          "versions": [
+            1
+          ],
+          "type": "boxplot"
+        },
+        {
+          "id": "FIG-003",
+          "title": "Índice de Conforto Pós-Operatório aos 15 dias",
+          "latest_version": 1,
+          "versions": [
+            1
+          ],
+          "type": "stacked_bar_percent"
+        }
+      ]
+    }
+  ]
+}

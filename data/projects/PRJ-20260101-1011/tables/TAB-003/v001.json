@@ -1,0 +1,106 @@
+{
+  "storage_format_version": "2.0",
+  "artifact": {
+    "kind": "table",
+    "title": "Demonstrativo financeiro mediano e margem hospitalar por técnica de fixação (Microcusteio real)",
+    "id": "TAB-003",
+    "version": "v001",
+    "project_id": "PRJ-20260101-1011",
+    "project_name": "TRABALHO PTERIGIO X COLA"
+  },
+  "content": {
+    "type": "table",
+    "columns": [
+      {
+        "id": "componente",
+        "name": "Componente Financeiro",
+        "style": {
+          "align": "left",
+          "bold": true
+        }
+      },
+      {
+        "id": "sutura",
+        "name": "Sutura Convencional",
+        "style": {
+          "align": "right",
+          "bold": true
+        }
+      },
+      {
+        "id": "cola",
+        "name": "Cola de Fibrina",
+        "style": {
+          "align": "right",
+          "bold": true
+        }
+      }
+    ],
+    "rows": [
+      {
+        "id": "repasse_sus",
+        "cells": {
+          "componente": "Repasse Recebido (SUS)",
+          "sutura": "R$ 209,55",
+          "cola": "R$ 209,55"
+        }
+      },
+      {
+        "id": "custo_insumo",
+        "cells": {
+          "componente": "Custo Direto do Insumo",
+          "sutura": "R$ 107,66",
+          "cola": "R$ 118,41"
+        }
+      },
+      {
+        "id": "honorario_medico",
+        "cells": {
+          "componente": "Honorário Médico Fixo",
+          "sutura": "R$ 80,00",
+          "cola": "R$ 80,00"
+        }
+      },
+      {
+        "id": "tempo_cirurgico",
+        "cells": {
+          "componente": "Tempo Cirúrgico Mediano",
+          "sutura": "15,00 min (0,25h)",
+          "cola": "11,00 min (0,18h)"
+        }
+      },
+      {
+        "id": "custo_ocupacao_bloco",
+        "cells": {
+          "componente": "Custo de Ocupação do Bloco",
+          "sutura": "R$ 7,22",
+          "cola": "R$ 5,30"
+        }
+      },
+      {
+        "id": "custo_total_mediano",
+        "style": {
+          "bold": true,
+          "border_top": "1px solid #000"
+        },
+        "cells": {
+          "componente": "Custo Total Mediano",
+          "sutura": "R$ 194,88",
+          "cola": "R$ 203,71"
+        }
+      },
+      {
+        "id": "margem_hospitalar_liquida",
+        "style": {
+          "bold": true,
+          "border_bottom": "1px solid #000"
+        },
+        "cells": {
+          "componente": "Margem Hospitalar Líquida",
+          "sutura": "R$ 14,67",
+          "cola": "R$ 5,84"
+        }
+      }
+    ]
+  }
+}
